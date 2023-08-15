@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hang Man - Jason Chuwuebuka</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <section class="wrapper">
+      <header>
+        <button id="general">General</button>
+        <button id="animals">Animals</button>
+        <button id="fruits">Fruits</button>
+      </header>
+
+      <article class="hangman-image">
+        <img
+          src="https://www.oligalma.com/downloads/images/hangman/hangman/4.jpg"
+          alt="hangman" />
+        <h4>Hang-man</h4>
+      </article>
+
+      <article class="word-box">
+        <ul class="word-display"></ul>
+
+        <p>Hint: <b></b></p>
+
+        <p class="incorrect">Incorrect: <b>0/6</b></p>
+
+        <div class="keyboard"></div>
+      </article>
+
+      <section class="game-modal">
+        <article class="modal-board">
+          <img src="" alt="" />
+          <h4></h4>
+          <p><b></b></p>
+          <button id="play-again">Play Again</button>
+        </article>
+      </section>
+    </section>
+
+    <script src="./js/main.js"></script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=hVhrg0gf"></script>
+  </body>
+</html>

@@ -1,0 +1,302 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: conic-gradient(from 90deg at bottom right, cyan, rebeccapurple);
+  overflow: hidden;
+  font-family: "Lobster", cursive;
+}
+
+.wrapper {
+  background: #fff;
+  max-width: 880px;
+  padding: 50px 30px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  gap: 20px;
+  background: #f4f4f8;
+  border-radius: 5px;
+}
+
+.wrapper header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.wrapper header button {
+  width: 30%;
+  padding: 10px;
+  border: 2px solid grey;
+  border-radius: 5px;
+  background: none;
+  color: #000;
+  box-shadow: 0 4px rgba(0, 0, 0, 0.4);
+}
+
+.wrapper header button.active {
+  background: #fe4a49;
+  color: #fff;
+}
+
+.wrapper header button:hover {
+  animation: scale 0.2s 2 linear;
+}
+
+@keyframes scale {
+  0%,
+  100% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+/*
+.wrapper header button:nth-child(1){
+    background:#FE4A49;
+}
+
+.wrapper header button:nth-child(2){
+    background:#FED766;
+}
+
+.wrapper header button:nth-child(3){
+    background:#009FB7;
+}
+*/
+
+.hangman-image {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.hangman-image img {
+  max-width: 270px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+}
+
+.hangman-image h4 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin: 10px 0 0 0;
+}
+
+.word-box {
+  padding: 10px;
+  margin-top: 50px;
+}
+
+.word-box .word-display {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.word-box .word-display .letter {
+  width: 20px;
+  border-bottom: 3px solid black;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.word-box .word-display .letter.guessed {
+  margin: -40px 0 35px 0;
+  border-color: transparent;
+}
+
+.word-box .word-display .letter.correctColor {
+  color: lime;
+  animation: blink 0.5s 3 linear;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.word-box p {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.word-box p b {
+  font-size: 1.2rem;
+}
+
+.word-box .incorrect {
+  margin-top: -10px;
+}
+
+.word-box .incorrect b {
+  color: red;
+  font-weight: 600;
+}
+
+.word-box .keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.word-box .keyboard button {
+  width: calc(100% / 9 - 5px);
+  padding: 5px 20px 5px 15px;
+  font-size: 1.1rem;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+  transform: scale(1);
+  background: none;
+  color: #000;
+  border: 1px solid grey;
+}
+
+.word-box .keyboard button[disabled] {
+  background: rgba(254, 73, 73, 0.5);
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.word-box .keyboard button:hover {
+  background: rgba(254, 73, 73, 0.5);
+  color: #fff;
+  animation: click 0.4s ease-in;
+}
+
+@keyframes click {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.9);
+  }
+}
+
+:where(.keyboard, .modal-board, .wrapper header) button {
+  text-align: center;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  background: #fe4a49;
+  color: #fff;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.game-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+  transition: 0.7s ease;
+}
+
+.game-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.game-modal .modal-board {
+  width: 372px;
+  background: #fff;
+  padding: 20px 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-modal .modal-board img {
+  max-width: 200px;
+}
+
+.game-modal .modal-board h4,
+p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.game-modal .modal-board p {
+  font-size: 1.3rem;
+}
+
+.game-modal .modal-board button {
+  background: #fed766;
+  padding: 12px 20px;
+  font-size: 1.3rem;
+  background: #000;
+}
+
+@media (max-width: 780px) {
+  .wrapper {
+    width: 100%;
+    max-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .wrapper header button {
+    width: 20%;
+    font-size: 1rem;
+    cursor: none;
+  }
+
+  .hangman-image {
+    margin-top: 50px;
+  }
+
+  .hangman-image img {
+    width: 200px;
+    max-height: 200px;
+  }
+
+  .hangman-image h4 {
+    display: none;
+  }
+
+  .word-box .word-display {
+    max-width: 300px;
+  }
+
+  .word-box .incorrect {
+    text-align: center;
+  }
+
+  :where(.keyboard, .modal-board) button {
+    cursor: none;
+  }
+}
